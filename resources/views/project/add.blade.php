@@ -74,6 +74,16 @@
 								</div>
 							</div>
 
+							<div class="input-field col s12">
+								<select id="currency" name="currency">
+									<option value="0">- Select -</option>
+									@foreach($currency as $value)
+										<option value="{{ $value->id }}" >{{ $value->name }}</option>
+									@endforeach
+								</select>
+								<label for="currency">Currency</label>
+							</div>
+
 							<div class="row">
 								<div class="input-field col s12">
 									<input id="unit_total" onkeyup="calPrice(this.value);" type="number" name="unit_total" value="" >

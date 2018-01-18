@@ -2,6 +2,7 @@
 
 use App\ClientRate;
 use App\Clients;
+use App\Currency;
 use App\TypeRate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -27,11 +28,13 @@ class ClientController extends Controller {
 
         $client = Clients::find($id);
         $typerate = TypeRate::all();
+        $currency = Currency::all();
 
         return view('client.edit')
             ->with('menu', 'client')
             ->with('client', $client)
-            ->with('typerate', $typerate);
+            ->with('typerate', $typerate)
+            ->with('currency', $currency);
     }
 
     public function store(){
@@ -171,7 +174,14 @@ class ClientController extends Controller {
             }
 
             if($array[$i]['price'] != ''){
-                $array[$i]['price'] = $array[$i]['price'].' '.$array[$i]['currency'];
+                if($array[$i]['currency'] > 0){
+                    $currency = Currency::find($array[$i]['currency']);
+                    if($currency->position == 0){
+                        $array[$i]['price'] = $currency->symbol.$array[$i]['price'];
+                    }else{
+                        $array[$i]['price'] = $array[$i]['price'].' '.$currency->symbol;
+                    }
+                }
             }
             $array[$i]['actions'] = '<a href="javascript:;" onClick="editRate('.$array[$i]['id'].');" class="waves-effect waves-light btn blue" style="padding: 0 1rem;margin-right: 15px;">
                                             <i class="material-icons" style="margin-left: 0px;">build</i>

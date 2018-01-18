@@ -95,8 +95,13 @@
 							</div>
 
 							<div class="input-field col s12">
-								<input id="currency" name="currency" type="text" value="" >
-								<label id="label_currency" for="currency" class="active">Currency</label>
+								<select id="currency" name="currency">
+									<option value="0">- Select -</option>
+									@foreach($currency as $value)
+										<option value="{{ $value->id }}">{{ $value->name }}</option>
+									@endforeach
+								</select>
+								<label for="currency">Type</label>
 							</div>
 
 							<input type="hidden" id="client_rate_id" value="0" />
@@ -156,6 +161,8 @@
             $("#client_rate_id").val(0);
             $("#type_rate_id").val("");
             $('#type_rate_id').material_select();
+            $("#currency").val(0);
+            $('#currency').material_select();
             $("#price").val("");
             $("#currency").val("");
             $('#dataTable_wrapper').hide();
@@ -182,6 +189,8 @@
                     $("#client_rate_id").val(id);
                     $("#type_rate_id").val(data.rate);
                     $('#type_rate_id').material_select();
+                    $("#currency").val(data.currency);
+                    $('#currency').material_select();
                     $("#price").val(data.price);
                     $("#currency").val(data.currency);
                     $("#label_price").addClass('active');

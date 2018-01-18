@@ -65,6 +65,17 @@ Route::group(['middleware' => 'auth'], function()
         Route::post('/saveajax',['as' => 'project.saveajax', 'uses' => 'ProjectController@saveajax']);
     });
 
+
+    Route::group(['prefix' => 'currency'],function(){
+        Route::get('/',['as' => 'currency.index', 'uses' => 'CurrencyController@index']);
+        Route::get('/add',['as' => 'currency.add', 'uses' => 'CurrencyController@add']);
+        Route::get('/edit/{id}',['as' => 'currency.edit', 'uses' => 'CurrencyController@edit']);
+        Route::post('/',['as' => 'currency.store', 'uses' => 'CurrencyController@store']);
+        Route::post('/update',['as' => 'currency.update', 'uses' => 'CurrencyController@update']);
+        Route::get('/delete/{id}',['as' => 'currency.delete', 'uses' => 'CurrencyController@delete']);
+        Route::post('/ajax',['as' => 'currency.ajax', 'uses' => 'CurrencyController@ajax']);
+    });
+
     Route::get('/', ['as' => 'dashboard', 'uses' => 'HomeController@dashboard']);
 });
 

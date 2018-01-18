@@ -6,7 +6,7 @@ use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 
-class Linguistlevel extends Model implements AuthenticatableContract, CanResetPasswordContract {
+class Currency extends Model implements AuthenticatableContract, CanResetPasswordContract {
 
 	use Authenticatable, CanResetPassword;
 
@@ -15,13 +15,13 @@ class Linguistlevel extends Model implements AuthenticatableContract, CanResetPa
 	 *
 	 * @var string
 	 */
-	protected $table = 'linguist_level';
+	protected $table = 'currency';
 
 	/**
 	 * The attributes that are mass assignable.
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['name', 'rate_word', 'rate_hourly', 'currency'];
+	protected $fillable = ['name', 'rate', 'symbol', 'position'];
 
 }

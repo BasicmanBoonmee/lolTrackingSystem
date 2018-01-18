@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\Clients;
+use App\Currency;
 use App\Linguists;
 use App\Project;
 use App\ProjectLinguist;
@@ -23,16 +24,19 @@ class ProjectController extends Controller {
     public function add(){
 
         $typerate = TypeRate::all();
+        $currency = Currency::all();
 
         return view('project.add')
             ->with('menu','project')
-            ->with('typerate',$typerate);
+            ->with('typerate',$typerate)
+            ->with('currency', $currency);
     }
 
     public function edit($id=0){
 
         $project = Project::find($id);
         $typerate = TypeRate::all();
+        $currency = Currency::all();
 
         $client_name = "";
         if($project->clientsFK > 0){
@@ -40,12 +44,12 @@ class ProjectController extends Controller {
             $client_name = $client->name;
         }
 
-
         return view('project.edit')
             ->with('menu', 'project')
             ->with('project', $project)
             ->with('typerate',$typerate)
-            ->with('client_name', $client_name);
+            ->with('client_name', $client_name)
+            ->with('currency', $currency);
     }
 
     public function store(){
@@ -56,6 +60,7 @@ class ProjectController extends Controller {
         $project->unit_total = Input::get('unit_total');
         $project->clientsFK = Input::get('client');
         $project->total_price = Input::get('total_price');
+        $project->currency = Input::get('currency');
         $project->start_date = date("Y-m-d H:i:s",strtotime(str_replace("/","-",Input::get('start_date'))));
         $project->end_date = date("Y-m-d H:i:s",strtotime(str_replace("/","-",Input::get('end_date'))));
         $project->dead_line = date("Y-m-d H:i:s",strtotime(str_replace("/","-",Input::get('dead_line'))));
@@ -75,6 +80,7 @@ class ProjectController extends Controller {
         $project->unit_total = Input::get('unit_total');
         $project->clientsFK = Input::get('client');
         $project->total_price = Input::get('total_price');
+        $project->currency = Input::get('currency');
         $project->start_date = date("Y-m-d H:i:s",strtotime(str_replace("/","-",Input::get('start_date'))));
         $project->end_date = date("Y-m-d H:i:s",strtotime(str_replace("/","-",Input::get('end_date'))));
         $project->dead_line = date("Y-m-d H:i:s",strtotime(str_replace("/","-",Input::get('dead_line'))));

@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\Clients;
+use App\Currency;
 use App\Linguistlevel;
 use App\Linguists;
 use Illuminate\Http\Request;
@@ -19,17 +20,23 @@ class LinguistlevelController extends Controller {
     }
 
     public function add(){
+
+	    $currency = Currency::all();
+
         return view('linguistlevel.add')
-            ->with('menu','linguistlevel');
+            ->with('menu','linguistlevel')
+            ->with('currency',$currency);
     }
 
     public function edit($id=0){
 
         $linguistlevel = Linguistlevel::find($id);
+        $currency = Currency::all();
 
         return view('linguistlevel.edit')
             ->with('menu', 'linguistlevel')
-            ->with('linguistlevel', $linguistlevel);
+            ->with('linguistlevel', $linguistlevel)
+            ->with('currency',$currency);
     }
 
     public function store(){
@@ -37,6 +44,7 @@ class LinguistlevelController extends Controller {
         $linguistlevel->name = Input::get('name');
         $linguistlevel->rate_word = Input::get('rate_word');
         $linguistlevel->rate_hourly = Input::get('rate_hourly');
+        $linguistlevel->currency = Input::get('currency');
         $linguistlevel->save();
         return redirect()
             ->route('linguistlevel.index')
@@ -50,6 +58,7 @@ class LinguistlevelController extends Controller {
         $linguistlevel->name = Input::get('name');
         $linguistlevel->rate_word = Input::get('rate_word');
         $linguistlevel->rate_hourly = Input::get('rate_hourly');
+        $linguistlevel->currency = Input::get('currency');
         $linguistlevel->save();
         return redirect()
             ->route('linguistlevel.index')
@@ -92,6 +101,28 @@ class LinguistlevelController extends Controller {
         for($i=0;$i<count($array);$i++){
             if($array[$i]['name'] == ''){
                 $array[$i]['name'] = '-';
+            }
+
+            if($array[$i]['rate_word'] != ''){
+                if($array[$i]['currency'] > 0){
+                    $currency = Currency::find($array[$i]['currency']);
+                    if($currency->position == 0){
+                        $array[$i]['rate_word'] = $currency->symbol.$array[$i]['rate_word'];
+                    }else{
+                        $array[$i]['rate_word'] = $array[$i]['rate_word'].' '.$currency->symbol;
+                    }
+                }
+            }
+
+            if($array[$i]['rate_hourly'] != ''){
+                if($array[$i]['currency'] > 0) {
+                    $currency = Currency::find($array[$i]['currency']);
+                    if ($currency->position == 0) {
+                        $array[$i]['rate_hourly'] = $currency->symbol . $array[$i]['rate_hourly'];
+                    } else {
+                        $array[$i]['rate_hourly'] = $array[$i]['rate_hourly'] . ' ' . $currency->symbol;
+                    }
+                }
             }
 
             $array[$i]['actions'] = '<a href="'.route('linguistlevel.edit', ['id' => $array[$i]['id']]).'" class="waves-effect waves-light btn blue" style="padding: 0 1rem;margin-right: 15px;">

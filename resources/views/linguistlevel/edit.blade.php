@@ -42,6 +42,16 @@
 								</div>
 							</div>
 
+							<div class="input-field col s12">
+								<select id="currency" name="currency">
+									<option value="0">- Select -</option>
+									@foreach($currency as $value)
+										<option value="{{ $value->id }}" @if($linguistlevel->currency == $value->id){{ "selected" }}@endif>{{ $value->name }}</option>
+									@endforeach
+								</select>
+								<label for="currency">Currency</label>
+							</div>
+
 						</div>
 					</div>
 				</form>

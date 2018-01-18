@@ -22,6 +22,6 @@ class Project extends Model implements AuthenticatableContract, CanResetPassword
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['name', 'status', 'type_rateFK', 'unit_total', 'clientsFK', 'total_price', 'start_date', 'end_date','dead_line'];
+	protected $fillable = ['name', 'status', 'type_rateFK', 'unit_total', 'clientsFK', 'total_price', 'currency', 'start_date', 'end_date','dead_line'];
 
 }

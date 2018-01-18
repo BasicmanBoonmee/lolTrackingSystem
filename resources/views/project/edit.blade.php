@@ -82,6 +82,16 @@
 									</div>
 								</div>
 
+								<div class="input-field col s12">
+									<select id="currency" name="currency">
+										<option value="0">- Select -</option>
+										@foreach($currency as $value)
+											<option value="{{ $value->id }}" @if($project->currency == $value->id){{ "selected" }}@endif>{{ $value->name }}</option>
+										@endforeach
+									</select>
+									<label for="currency">Currency</label>
+								</div>
+
 								<div class="row">
 									<div class="input-field col s12">
 										<input id="unit_total" onkeyup="calPrice(this.value);" type="number" name="unit_total" value="{{ $project->unit_total }}" >
@@ -174,8 +184,13 @@
 							</div>
 
 							<div class="input-field col s6">
-								<input id="currency" name="currency" type="text" value="" >
-								<label id="label_currency" for="currency" class="active">Currency</label>
+								<select id="currency" name="currency">
+									<option value="0">- Select -</option>
+									@foreach($currency as $value)
+										<option value="{{ $value->id }}">{{ $value->name }}</option>
+									@endforeach
+								</select>
+								<label for="currency">Currency</label>
 							</div>
 
 							<div class="input-field col s6">
@@ -400,7 +415,8 @@
             $('#lg_status').material_select();
             $("#linguist").val("");
             $("#price").val("");
-            $("#currency").val("");
+            $("#currency").val(0);
+            $('#currency').material_select();
             $("#wc").val("");
             $("#hourly").val("");
             $("#score").val(0);
@@ -439,6 +455,7 @@
                     $('#lg_status').material_select();
                     $("#price").val(data.price);
                     $("#currency").val(data.currency);
+                    $('#currency').material_select();
                     $("#score").val(data.score);
                     $("#wc").val(data.wc);
                     $("#hourly").val(data.hourly);

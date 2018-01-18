@@ -215,6 +215,12 @@
 					</a>
 				</li>
 
+				<li class="no-padding @if(isset($menu) && $menu == "currency"){!! "active" !!}@endif">
+					<a class="waves-effect waves-grey @if(isset($menu) && $menu == "currency"){!! "active" !!}@endif" href="{{ route('currency.index') }}">
+						<i class="material-icons">attach_money</i>Currency
+					</a>
+				</li>
+
 				<li class="no-padding">
 					<a class="waves-effect waves-grey" href="{{ route('logout') }}">
 						<i class="material-icons">exit_to_app</i>Logout
