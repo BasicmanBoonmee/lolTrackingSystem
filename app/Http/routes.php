@@ -38,6 +38,7 @@ Route::group(['middleware' => 'auth'], function()
         Route::get('/delete/{id}',['as' => 'linguist.delete', 'uses' => 'LinguistsController@delete']);
         Route::post('/ajax',['as' => 'linguist.ajax', 'uses' => 'LinguistsController@ajax']);
         Route::post('/search',['as' => 'linguist.search', 'uses' => 'LinguistsController@search']);
+        Route::post('/ratelevel',['as' => 'linguist.ratelevel', 'uses' => 'LinguistsController@ratelevel']);
     });
 
     Route::group(['prefix' => 'linguist-level'],function(){

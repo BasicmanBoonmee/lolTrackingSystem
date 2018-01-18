@@ -7,7 +7,7 @@
 				<form action="{{ route('clientrate.store') }}" method="post">
 					<div class="row">
 						<div class="col s6">
-							<span class="card-title">Add Client Rate</span>
+							<span class="card-title">Add Project Type</span>
 						</div>
 						<div class="col s6">
 							<input type="hidden" name="_token" value="{{ csrf_token() }}" />

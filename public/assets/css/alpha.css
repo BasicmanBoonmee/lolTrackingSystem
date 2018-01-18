@@ -185,7 +185,7 @@ body:not(.loaded) .mn-content {
 .header-title {
     font-size: 15px;
     font-weight: bold;
-    text-transform: uppercase;
+    /*text-transform: uppercase;*/
     line-height: 60px;
     float: left;
     color: #fff;
@@ -3612,8 +3612,9 @@ body.search-app .search-input input:-ms-input-placeholder {
 .signin-page {
     height: 100%;
     width: 100%;
-    background: url('../images/mountains2.jpg') no-repeat;
-    background-size: cover;
+    background-color:#e6b903;
+    /*background: url('../images/mountains2.jpg') no-repeat;
+    background-size: cover;*/
 }
 
 .signup-page {

@@ -7,7 +7,7 @@
 				<form action="{{ route('linguistlevel.update') }}" method="post">
 					<div class="row">
 						<div class="col s6">
-							<span class="card-title">Edit Linguist Level</span>
+							<span class="card-title">Edit Linguist Rate</span>
 						</div>
 						<div class="col s6">
 							<input type="hidden" name="_token" value="{{ csrf_token() }}" />
@@ -38,7 +38,7 @@
 							<div class="row">
 								<div class="input-field col s12">
 									<input id="rate_hourly" type="text" name="rate_hourly" value="{{ $linguistlevel->rate_hourly }}" >
-									<label for="rate_hourly">Hourly</label>
+									<label for="rate_hourly">Rate / Hourly</label>
 								</div>
 							</div>
 

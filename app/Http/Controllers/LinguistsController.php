@@ -158,4 +158,15 @@ class LinguistsController extends Controller {
         ]);
     }
 
+    public function ratelevel(){
+        $results = Linguistlevel::find(Input::get('linguist_level_id'));
+
+        $array = array(
+            'success' => 1,
+            'results' => $results
+        );
+
+        return response()->jsonp(\Request::query('callback'), $array);
+    }
+
 }

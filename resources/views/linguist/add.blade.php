@@ -46,7 +46,7 @@
 											<option value="{{ $value->id }}">{{ $value->name }}</option>
 										@endforeach
 									</select>
-									<label for="linguist_levelFK">Level</label>
+									<label for="linguist_levelFK">Rate</label>
 								</div>
 							</div>
 

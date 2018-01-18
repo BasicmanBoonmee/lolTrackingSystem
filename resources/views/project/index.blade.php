@@ -31,10 +31,10 @@
 						<tr>
 							<th>Name</th>
 							<th>Status</th>
-							<th>Price</th>
+							<th>Client fee</th>
 							<th>Client deadline</th>
 							<th>Start Project</th>
-							<th>End Project</th>
+							<th>Delivery Project</th>
 							<th></th>
 						</tr>
 						</thead>

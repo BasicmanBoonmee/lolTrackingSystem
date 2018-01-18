@@ -16,11 +16,11 @@
 		</div>
 
 		<div class="col s9">
-			<div class="page-title">Client Rate</div>
+			<div class="page-title">Project Type</div>
 		</div>
 		<div class="col s3 right-align">
 			<a href="{{ route('clientrate.add') }}" class="waves-effect waves-light btn">
-				<i class="material-icons left">add</i> Add Client Rate
+				<i class="material-icons left">add</i> Add Project Type
 			</a>
 		</div>
 		<div class="col s12 m12 l12">

@@ -16,11 +16,11 @@
 		</div>
 
 		<div class="col s9">
-			<div class="page-title">Linguists Level</div>
+			<div class="page-title">Linguists Rate</div>
 		</div>
 		<div class="col s3 right-align">
 			<a href="{{ route('linguistlevel.add') }}" class="waves-effect waves-light btn">
-				<i class="material-icons left">add</i> Add Linguist Level
+				<i class="material-icons left">add</i> Add Linguist Rate
 			</a>
 		</div>
 		<div class="col s12 m12 l12">
@@ -31,7 +31,7 @@
 						<tr>
 							<th>Name</th>
 							<th>Rate / Words</th>
-							<th>Hourly</th>
+							<th>Rate / Hourly</th>
 							<th></th>
 						</tr>
 						</thead>

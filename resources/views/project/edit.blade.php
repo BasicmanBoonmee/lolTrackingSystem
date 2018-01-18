@@ -92,14 +92,7 @@
 								<div class="row">
 									<div class="input-field col s12">
 										<input id="total_price" type="number" name="total_price" value="{{ $project->total_price }}" >
-										<label for="total_price" class="active">Price</label>
-									</div>
-								</div>
-
-								<div class="row">
-									<div class="input-field col s12">
-										<label for="dead_line" class="active">Client Deadline</label>
-										<input id="dead_line" type="text" name="dead_line" class="datepicker" value="{{ date("d/m/Y",strtotime($project->dead_line)) }}" >
+										<label for="total_price" class="active">Client fee</label>
 									</div>
 								</div>
 
@@ -112,7 +105,14 @@
 
 								<div class="row">
 									<div class="input-field col s12">
-										<label for="end_date" class="active">End Project</label>
+										<label for="dead_line" class="active">Client Deadline</label>
+										<input id="dead_line" type="text" name="dead_line" class="datepicker" value="{{ date("d/m/Y",strtotime($project->dead_line)) }}" >
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="input-field col s12">
+										<label for="end_date" class="active">Delivery Project</label>
 										<input id="end_date" type="text" name="end_date" class="datepicker" value="{{ date("d/m/Y",strtotime($project->end_date)) }}" >
 									</div>
 								</div>
@@ -132,7 +132,7 @@
 						<div class="col s4">
 							<span class="card-title">Linguist</span>
 						</div>
-						<div class="col s8">
+						<div class="col s8" id="add-form-btn">
 							<input type="button" value="Add" onClick="addForm();" class="waves-effect waves-light btn right" />
 						</div>
 
@@ -176,6 +176,11 @@
 							<div class="input-field col s6">
 								<input id="currency" name="currency" type="text" value="" >
 								<label id="label_currency" for="currency" class="active">Currency</label>
+							</div>
+
+							<div class="input-field col s6">
+								<input id="score" name="score" type="text" value="" placeholder="0" >
+								<label id="label_score" for="score" class="active">Score</label>
 							</div>
 
 							<div class="row">
@@ -373,6 +378,7 @@
                     "lg_id" : $("#linguist").val(),
                     "price" : $("#price").val(),
                     "currency" : $("#currency").val(),
+					"score": $("#score").val(),
 					"wc" : $("#wc").val(),
 					"hourly" : $("#hourly").val(),
 					"late" : $("#late").val(),
@@ -388,6 +394,7 @@
         }
 
         function addForm(){
+            $("#add-form-btn").hide();
             $("#project_lg_id").val(0);
             $("#lg_status").val("");
             $('#lg_status').material_select();
@@ -396,6 +403,7 @@
             $("#currency").val("");
             $("#wc").val("");
             $("#hourly").val("");
+            $("#score").val(0);
             $("#late").val(0);
             $('#late').material_select();
             $("#note").val("");
@@ -409,6 +417,7 @@
         }
 
         function cancelForm(){
+            $("#add-form-btn").show();
             $('.box-add-ajax').hide();
             $('#dataTable_wrapper').show();
 		}
@@ -423,13 +432,14 @@
                     "id" : id
                 },
                 success: function(data){
-
+                    $("#add-form-btn").hide();
                     $("#project_lg_id").val(id);
                     $("#linguist").val(data.linguist);
                     $("#lg_status").val(data.status);
                     $('#lg_status').material_select();
                     $("#price").val(data.price);
                     $("#currency").val(data.currency);
+                    $("#score").val(data.score);
                     $("#wc").val(data.wc);
                     $("#hourly").val(data.hourly);
                     $("#late").val(data.late);

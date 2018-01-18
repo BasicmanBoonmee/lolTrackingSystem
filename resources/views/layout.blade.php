@@ -3,7 +3,7 @@
 <head>
 
 	<!-- Title -->
-	<title>Alpha | Responsive Admin Dashboard Template</title>
+	<title>LocalLight Tracking System</title>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 	<meta charset="UTF-8">
@@ -85,7 +85,7 @@
 					</a>
 				</section>
 				<div class="header-title col s3 m3">
-					<span class="chapter-title">Local Light Tracking System</span>
+					<span class="chapter-title">LocalLight Tracking System</span>
 				</div>
 				<?php /*
 				<ul class="right col s9 m3 nav-right-menu">
@@ -199,7 +199,7 @@
 
 				<li class="no-padding @if(isset($menu) && $menu == "linguistlevel"){!! "active" !!}@endif">
 					<a class="waves-effect waves-grey @if(isset($menu) && $menu == "linguistlevel"){!! "active" !!}@endif" href="{{ route('linguistlevel.index') }}">
-						<i class="material-icons">verified_user</i>Linguist Level
+						<i class="material-icons">verified_user</i>Linguist Rate
 					</a>
 				</li>
 
@@ -211,7 +211,7 @@
 
 				<li class="no-padding @if(isset($menu) && $menu == "clientrate"){!! "active" !!}@endif">
 					<a class="waves-effect waves-grey @if(isset($menu) && $menu == "clientrate"){!! "active" !!}@endif" href="{{ route('clientrate.index') }}">
-						<i class="material-icons">attach_money</i>Client Rate
+						<i class="material-icons">attach_money</i>Project Type
 					</a>
 				</li>
 

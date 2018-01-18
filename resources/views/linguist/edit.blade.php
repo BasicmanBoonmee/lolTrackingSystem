@@ -41,12 +41,12 @@
 
 							<div class="row">
 								<div class="input-field col s12">
-									<select id="linguist_levelFK" name="linguist_levelFK">
+									<select id="linguist_levelFK" onchange="showRate(this.value);" name="linguist_levelFK">
 										@foreach($linguistlevel as $value)
 											<option value="{{ $value->id }}" @if($linguist->linguist_levelFK == $value->id){{ 'selected' }}@endif>{{ $value->name }}</option>
 										@endforeach
 									</select>
-									<label for="linguist_levelFK">Level</label>
+									<label for="linguist_levelFK">Rate</label>
 								</div>
 							</div>
 
@@ -63,4 +63,28 @@
 			</div>
 		</div>
 	</div>
+@stop
+
+
+@section('js')
+	<script>
+		function showRate(value){
+		    console.log("Show Rate : "+value);
+            $.ajax({
+                url:'{{ route('linguist.ratelevel') }}',
+                type:'POST',
+                dataType: 'jsonp',
+                data:{
+                    "_token" : "{{ csrf_token() }}",
+                    "linguist_level_id" : value
+                },
+                success:function(data){
+                    console.log("Success");
+                    console.log(data);
+                    if(data.success == 1){
+                    }
+                }
+            });
+		}
+	</script>
 @stop

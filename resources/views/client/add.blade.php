@@ -45,7 +45,7 @@
 							</div>
 							<div class="row">
 								<div class="input-field col s12">
-									<input id="payment_term" name="payment_term" type="number" >
+									<input id="payment_term" name="payment_term" type="number" value="45" >
 									<label for="payment_term">Payment Term</label>
 								</div>
 							</div>

@@ -259,6 +259,7 @@ class ProjectController extends Controller {
         $result->status = Input::get('status');
         $result->wc = Input::get('wc');
         $result->hourly = Input::get('hourly');
+        $result->score = Input::get('score');
         $result->price = Input::get('price');
         $result->currency = Input::get('currency');
         $result->late = Input::get('late');

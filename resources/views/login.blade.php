@@ -3,7 +3,7 @@
 <head>
 
 	<!-- Title -->
-	<title>LOL Tracking System</title>
+	<title>LocalLight Tracking System</title>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 	<meta charset="UTF-8">
@@ -18,7 +18,7 @@
 
 
 	<!-- Theme Styles -->
-	<link href="{{ asset('assets/css/alpha.min.css') }}" rel="stylesheet" type="text/css"/>
+	<link href="{{ asset('assets/css/alpha.css') }}" rel="stylesheet" type="text/css"/>
 	<link href="{{ asset('assets/css/custom.css') }}" rel="stylesheet" type="text/css"/>
 
 

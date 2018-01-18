@@ -85,14 +85,7 @@
 							<div class="row">
 								<div class="input-field col s12">
 									<input id="total_price" type="number" name="total_price" value="" >
-									<label for="total_price">Price</label>
-								</div>
-							</div>
-
-							<div class="row">
-								<div class="col s12">
-									<label for="dead_line">Client Deadline</label>
-									<input id="dead_line" type="text" name="dead_line" class="datepicker" value="" >
+									<label for="total_price">Client fee</label>
 								</div>
 							</div>
 
@@ -104,8 +97,15 @@
 							</div>
 
 							<div class="row">
+								<div class="col s6">
+									<label for="dead_line">Client Deadline</label>
+									<input id="dead_line" type="text" name="dead_line" class="datepicker" value="" >
+								</div>
+							</div>
+
+							<div class="row">
 								<div class="col s12">
-									<label for="end_date">End Project</label>
+									<label for="end_date">Delivery Project</label>
 									<input id="end_date" type="text" name="end_date" class="datepicker" value="" >
 								</div>
 							</div>
@@ -131,6 +131,7 @@
                 closeOnSelect: true,
                 format: 'dd/mm/yyyy',
             });
+
 
 
             $('.select2').select2({

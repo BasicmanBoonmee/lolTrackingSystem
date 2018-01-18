@@ -72,9 +72,9 @@
 				<div class="card-content">
 					<div class="row">
 						<div class="col s4">
-							<span class="card-title">Rate</span>
+							<span class="card-title">Project Type</span>
 						</div>
-						<div class="col s8">
+						<div class="col s8" id="add-rate-btn">
 							<input type="button" value="Add" onClick="addRate();" class="waves-effect waves-light btn right" />
 						</div>
 
@@ -86,7 +86,7 @@
 										<option value="{{ $value->id }}">{{ $value->name }}</option>
 									@endforeach
 								</select>
-								<label for="type_rate_id">Rate</label>
+								<label for="type_rate_id">Type</label>
 							</div>
 
 							<div class="input-field col s12">
@@ -109,7 +109,7 @@
 							<table id="dataTable" class="display responsive-table datatable-example">
 								<thead>
 								<tr>
-									<th>Rate</th>
+									<th>Type</th>
 									<th>Price</th>
 									<th></th>
 								</tr>
@@ -152,8 +152,10 @@
         } );
 
         function addRate(){
+            $("#add-rate-btn").hide();
             $("#client_rate_id").val(0);
             $("#type_rate_id").val("");
+            $('#type_rate_id').material_select();
             $("#price").val("");
             $("#currency").val("");
             $('#dataTable_wrapper').hide();
@@ -161,6 +163,7 @@
 		}
 
 		function cancelRate(){
+            $("#add-rate-btn").show();
             $('.box-add-ajax').hide();
             $('#dataTable_wrapper').show();
 		}
@@ -175,8 +178,10 @@
                     "id" : id
                 },
 				success: function(data){
+                    $("#add-rate-btn").hide();
                     $("#client_rate_id").val(id);
                     $("#type_rate_id").val(data.rate);
+                    $('#type_rate_id').material_select();
                     $("#price").val(data.price);
                     $("#currency").val(data.currency);
                     $("#label_price").addClass('active');
